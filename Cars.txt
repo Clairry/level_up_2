@@ -1,0 +1,3 @@
+Mini Cooper Hatch III,2016,83000,1200000
+Smart Fortwo II,2016,30000,920000
+Alfa Romeo Giulietta III,2014,48000,960000
