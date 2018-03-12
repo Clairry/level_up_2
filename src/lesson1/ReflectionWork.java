@@ -7,8 +7,10 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class ReflectionWork {
+    static ArrayList<Car> carList;
+
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
-        ArrayList<Car> carList = new ArrayList<Car>();
+        carList = new ArrayList<Car>();
         String carsLine = null;
         Integer i=0;
 
@@ -17,29 +19,23 @@ public class ReflectionWork {
                 String[] carProperties = carsLine.split(",");
                 carList.add(new Car());
 
-                Class carClass=carList.get(i).getClass();
-                Field carName=carClass.getDeclaredField("name");
-                carName.setAccessible(true);
-                carName.set(carList.get(i),carProperties[0]);
-
-                Field carYear=carClass.getDeclaredField("year");
-                carYear.setAccessible(true);
-                carYear.set(carList.get(i),carProperties[1]);
-
-                Field carKilometre=carClass.getDeclaredField("kilometre");
-                carKilometre.setAccessible(true);
-                carKilometre.set(carList.get(i),carProperties[2]);
-
-                Field carPrice=carClass.getDeclaredField("price");
-                carPrice.setAccessible(true);
-                carPrice.set(carList.get(i),carProperties[3]);
-
-                //System.out.println(carList.get(i).getName() + ' ' +carList.get(i).getYear() + ' ' +carList.get(i).getKilometre() + ' ' +carList.get(i).getPrice());
+                setField("name", carList.get(i), carProperties[0]);
+                setField("year", carList.get(i), carProperties[1]);
+                setField("kilometre", carList.get(i), carProperties[2]);
+                setField("price", carList.get(i), carProperties[3]);
+//                System.out.println(carList.get(i).getName() + ' ' +carList.get(i).getYear() + ' ' +carList.get(i).getKilometre() + ' ' +carList.get(i).getPrice());
 
                 i++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void setField(String field, Car carObj, String value) throws NoSuchFieldException, IllegalAccessException {
+        Class carClass=carObj.getClass();
+        Field carName=carClass.getDeclaredField(field);
+        carName.setAccessible(true);
+        carName.set(carObj,value);
     }
 }
