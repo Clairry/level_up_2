@@ -1,4 +1,4 @@
-package lesson2.classesWithFields;
+package lesson2.classesWithFields.innerClassWithPackage;
 
 import lesson2.RandomInt;
 
