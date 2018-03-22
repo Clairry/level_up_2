@@ -1,7 +1,9 @@
 package lesson2.classesWithFields.innerClassWithPackage.oneMorePackage;
 
 import lesson2.RandomInt;
+import lesson2dop.SerializedBy;
 
+@SerializedBy("lesson2dop.UserSerializator")
 public class User {
     public User() {};
 
